@@ -127,7 +127,7 @@ class VectorCaseSpecs extends Specification with ScalaCheck {
         vec2(i) aka ("Index " + i + " in derivative") mustEqual vec(i) aka ("Index " + i + " in origin")
       }
       vec2.last mustEqual 42
-    }.set(maxSize -> 3000, minTestsOk -> 1000, workers -> numProcessors)
+    }.set(maxSize = 3000, minTestsOk -> 1000, workers -> numProcessors)
 
     "maintain both old and new versions after update" in check { (vec: VectorCase[Int], i: Int) =>
       (!vec.isEmpty && i > Int.MinValue) ==> {
@@ -352,7 +352,7 @@ class VectorCaseSpecs extends Specification with ScalaCheck {
   }
   
   val numProcessors = Runtime.getRuntime.availableProcessors
-  implicit val params: Parameters = set(workers -> numProcessors)
+  implicit val params: Parameters = set(workers = numProcessors)
 }
 
   
