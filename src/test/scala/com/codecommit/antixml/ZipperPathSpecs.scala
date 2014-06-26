@@ -33,7 +33,7 @@ import org.specs2.ScalaCheck
 import org.specs2.matcher.Parameters
 import org.scalacheck.{Arbitrary, Prop}
 import Prop._
-import org.specs2.matcher.ScalaCheckMatchers._
+//import org.specs2.matcher.ScalaCheckMatchers._
 
 class ZipperPathSpecs extends Specification with ScalaCheck {
   import math._
@@ -173,7 +173,7 @@ class ZipperPathSpecs extends Specification with ScalaCheck {
         zp2(i) aka ("Index " + i + " in derivative") mustEqual zp(i) aka ("Index " + i + " in origin")
       }
       zp2.last mustEqual 42
-    }.set(maxSize -> 3000, minTestsOk -> 1000, workers -> numProcessors)
+    }.set(maxSize = 3000, minTestsOk -> 1000, workers -> numProcessors)
 
     "maintain both old and new versions after update" in check { (zp: ZipperPath, i: Int) =>
       (!zp.isEmpty && i > Int.MinValue) ==> {
@@ -399,7 +399,7 @@ class ZipperPathSpecs extends Specification with ScalaCheck {
   }
   
   val numProcessors = Runtime.getRuntime.availableProcessors
-  implicit val params: Parameters = set(workers -> numProcessors)
+  implicit val params: Parameters = set(workers = numProcessors)
 }
 
   

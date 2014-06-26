@@ -8,8 +8,8 @@ object build extends Build {
 
   lazy val buildSettings = Defaults.defaultSettings ++ Seq(
     organization := "no.arktekk",
-    scalaVersion := "2.11.0",
-    crossScalaVersions := Seq("2.9.2", "2.9.1", "2.10.0", "2.11.0"),
+    scalaVersion := "2.11.1",
+    crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.1"),
     scalacOptions := Seq("-deprecation", "-language:_"),
     publishTo <<= (version) apply {
       (v: String) => if (v.trim().endsWith("SNAPSHOT")) Some(Resolvers.sonatypeNexusSnapshots) else Some(Resolvers.sonatypeNexusStaging)
@@ -50,8 +50,9 @@ object build extends Build {
       description := "anti-xml",
       name := "anti-xml",
       libraryDependencies ++= Seq(
-        "org.scalacheck" %% "scalacheck" % "1.11.3" % "test" withSources,
-        "org.specs2" %% "specs2" % "2.4-SNAPSHOT" % "test" withSources,
+        "org.scala-lang.modules" %% "scala-xml" % "1.0.2" withSources,
+        "org.scalacheck" %% "scalacheck" % "1.11.4" % "test" withSources,
+        "org.specs2" %% "specs2" % "2.3.12" % "test" withSources,
         "com.github.dmlap" % "sizeof" % "0.1" % "perf" from "http://cloud.github.com/downloads/dmlap/jvm-sizeof/jvm-sizeof-0.1.jar"
       ),
       /*publishArtifact in(Compile, packageBin) := true,
